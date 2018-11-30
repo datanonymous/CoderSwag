@@ -7,6 +7,18 @@ object DataService {
         Category("HOODIES","hoodieimage"),
         Category("HATS","hatimage"),
         Category("DIGITAL","digitalgoodsimage")
+//        Category("a","shirtimage"),
+//        Category("b","hoodieimage"),
+//        Category("c","hatimage"),
+//        Category("d","digitalgoodsimage"),
+//        Category("e","shirtimage"),
+//        Category("f","hoodieimage"),
+//        Category("g","hatimage"),
+//        Category("h","digitalgoodsimage"),
+//        Category("i","shirtimage"),
+//        Category("j","hoodieimage"),
+//        Category("k","hatimage"),
+//        Category("l","digitalgoodsimage")
     )
 
     val hats = listOf(
