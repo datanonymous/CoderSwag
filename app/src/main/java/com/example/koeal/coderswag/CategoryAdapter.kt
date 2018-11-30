@@ -15,16 +15,17 @@ class CategoryAdapter(context: Context, categories:List<Category>):BaseAdapter()
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val categoryView:View
-        categoryView = LayoutInflater.from(context).inflate(R.layout.category_list_item, null)
+
+        categoryView = LayoutInflater.from(context).inflate(R.layout.category_list_item, null) //category_list_item is the pattern to be repeated (needs category image and category name to populate)
+
+        //setting up variables
         val categoryImage: ImageView = categoryView.findViewById(R.id.categoryImage)
         val categoryName:TextView = categoryView.findViewById(R.id.categoryName)
 
         val category = categories[position]
-        categoryName.text = category.title
 
-        val resourceId = context.resources.getIdentifier(category.image, "drawable",context.packageName)
-        categoryImage.setImageResource(resourceId)
-        println(resourceId)
+        categoryImage.setImageResource(context.resources.getIdentifier(category.image, "drawable",context.packageName))
+        categoryName.text = category.title
 
         return categoryView
     }
