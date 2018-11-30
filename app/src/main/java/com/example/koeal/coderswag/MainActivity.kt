@@ -1,5 +1,6 @@
 package com.example.koeal.coderswag
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -15,9 +16,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        categoryListView.adapter = CategoryRecycleAdapter(this, DataService.categories) //needs context, needs view to serve to list view, and needs to know the data that it will be adapting
+        categoryListView.adapter = CategoryRecycleAdapter(this, DataService.categories){category ->
+            Toast.makeText(this,"Category title is: ${category.title}",Toast.LENGTH_SHORT).show()
+            val productIntent = Intent(this, ProductsActivity::class.java)
+            productIntent.putExtra(EXTRA_CATEGORY, category.title)
+            startActivity(productIntent)
+        }
+        //needs context, needs view to serve to list view, and needs to know the data that it will be adapting
         //categoryListView.adapter = adapter
 
+        //Layout manager positions item views inside a recyclerview and determines when to reuse items
         val layoutManager = LinearLayoutManager(this)
         categoryListView.layoutManager = layoutManager
         categoryListView.setHasFixedSize(true)
